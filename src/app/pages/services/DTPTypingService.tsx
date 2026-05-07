@@ -477,8 +477,8 @@ export function DTPTypingService() {
                 </div>
                 <div>
                   <p className="text-sm text-white/60 mb-1">Email</p>
-                  <a href="mailto:salesteam@honeytranslations.com" className="text-white hover:text-yellow-400 transition-colors font-semibold">
-                    salesteam@honeytranslations.com
+                  <a href="mailto:sales@honeytranslations.com" className="text-white hover:text-yellow-400 transition-colors font-semibold">
+                    sales@honeytranslations.com
                   </a>
                 </div>
               </div>

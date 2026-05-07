@@ -30,6 +30,6 @@ export default defineConfig({
     },
   },
   server: {
-    allowedHosts: ['unwrapped-nautical-granular.ngrok-free.dev'],
+    allowedHosts: ['extruding-parabola-sherry.ngrok-free.dev'],
   },
 })

@@ -469,14 +469,14 @@ export function Testimonials() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {/* Email */}
             <a 
-              href="mailto:salesteam@honeytranslations.com"
+              href="mailto:sales@honeytranslations.com"
               className="group bg-soft-blue rounded-3xl p-10 card-shadow-premium hover-glow transition-all duration-300 hover:scale-105"
             >
               <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform">
                 <Mail className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-xl font-bold text-[#151249] mb-2">Email Us</h3>
-              <p className="text-[#00C4FF] font-semibold">salesteam@honeytranslations.com</p>
+              <p className="text-[#00C4FF] font-semibold">sales@honeytranslations.com</p>
             </a>
 
             {/* Contact Page */}

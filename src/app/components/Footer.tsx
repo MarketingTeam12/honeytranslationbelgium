@@ -128,7 +128,7 @@ export function Footer() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 mb-1">{t('footer.email')}</div>
-                    <a href="mailto:salesteam@honeytranslations.com" className="text-sm text-gray-300 hover:text-yellow-400 transition-colors break-all">
+                    <a href="mailto:sales@honeytranslations.com" className="text-sm text-gray-300 hover:text-yellow-400 transition-colors break-all">
                       {t('footer.emailAddress')}
                     </a>
                   </div>

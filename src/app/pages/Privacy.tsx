@@ -529,8 +529,8 @@ export function Privacy() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-600 font-semibold uppercase tracking-wider mb-1">Email</p>
-                    <a href="mailto:salesteam@honeytranslations.com" className="text-lg text-[#00C4FF] hover:text-[#151249] transition-colors font-semibold">
-                      salesteam@honeytranslations.com
+                    <a href="mailto:sales@honeytranslations.com" className="text-lg text-[#00C4FF] hover:text-[#151249] transition-colors font-semibold">
+                      sales@honeytranslations.com
                     </a>
                   </div>
                 </div>

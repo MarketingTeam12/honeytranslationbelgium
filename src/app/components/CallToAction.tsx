@@ -43,9 +43,9 @@ export function CallToAction() {
         {/* Contact Information */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {[
-            { icon: Mail, label: 'Email Us', value: 'salesteam@honeytranslations.com', link: 'mailto:salesteam@honeytranslations.com' },
-            { icon: Phone, label: 'Call Us', value: '+32 2 XXX XXXX', link: 'tel:+3220000000' },
-            { icon: MapPin, label: 'Visit Us', value: 'Brussels, Belgium', link: '#' }
+            { icon: Mail, label: 'Email Us', value: 'sales@honeytranslations.com', link: 'mailto:sales@honeytranslations.com' },
+            { icon: Phone, label: 'Call Us', value: '+91 7299005577', link: 'tel:+917299005577' },
+            { icon: MapPin, label: 'Visit Us', value: 'Remote', link: '#' }
           ].map((contact, index) => {
             const Icon = contact.icon;
             return (

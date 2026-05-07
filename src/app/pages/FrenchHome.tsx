@@ -489,15 +489,15 @@ export function FrenchHome() {
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-white/60 text-sm">
                   <Mail className="w-4 h-4" />
-                  salesteam@honeytranslations.com
+                  sales@honeytranslations.com
                 </li>
                 <li className="flex items-center gap-2 text-white/60 text-sm">
                   <Phone className="w-4 h-4" />
-                  +32 2 XXX XXXX
+                  +91 7299005577
                 </li>
                 <li className="flex items-center gap-2 text-white/60 text-sm">
                   <MapPin className="w-4 h-4" />
-                  Bruxelles, Belgique
+                  Remote
                 </li>
               </ul>
             </div>
