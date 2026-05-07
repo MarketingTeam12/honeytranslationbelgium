@@ -362,7 +362,7 @@ export function Contact() {
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center mx-auto mb-6 shadow-2xl">
                   <MapPin className="w-10 h-10 text-[#151249]" />
                 </div>
-                <h3 className="text-3xl font-bold mb-2">{t('contact.map.location')}</h3>
+                <h3 className="text-[#efb100] text-3xl font-bold mb-2">{t('contact.map.location')}</h3>
                 <p className="text-xl text-white/80">{t('contact.map.center')}</p>
               </div>
             </div>
@@ -420,7 +420,7 @@ export function Contact() {
         </div>
 
         <div className="container mx-auto max-w-4xl text-center relative z-10 animate-fadeInScale">
-          <h2 className="text-5xl md:text-6xl mb-8 font-bold">{t('contact.cta.title')}</h2>
+          <h2 className="text-[#efb100] text-5xl md:text-6xl mb-8 font-bold">{t('contact.cta.title')}</h2>
           <p className="text-xl md:text-2xl mb-12 text-white/90 max-w-2xl mx-auto">
             {t('contact.cta.subtitle')}
           </p>
