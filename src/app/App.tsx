@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
+import { BlogProvider } from '../contexts/BlogContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
@@ -11,6 +12,8 @@ import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
+import { BlogPost } from './pages/BlogPost';
+import { BlogAdmin } from './pages/BlogAdmin';
 import Belgium from './pages/Belgium';
 import { CEO } from './pages/CEO';
 import { Team } from './pages/Team';
@@ -34,6 +37,9 @@ import { StudyAbroadService } from './pages/services/StudyAbroadService';
 import { LanguageTrainingService } from './pages/services/LanguageTrainingService';
 import { ContentWritingService } from './pages/services/ContentWritingService';
 import { LocalizationService } from './pages/services/LocalizationService';
+import { LegalTranslationService } from './pages/services/LegalTranslationService';
+import { MedicalTranslationService } from './pages/services/MedicalTranslationService';
+import { TechnicalTranslationService } from './pages/services/TechnicalTranslationService';
 import { VoiceOverDubbingService } from './pages/services/VoiceOverDubbingService';
 import { GraphicDesignService } from './pages/services/GraphicDesignService';
 import { TranscriptionService } from './pages/services/TranscriptionService';
@@ -73,6 +79,13 @@ function AppShell() {
       <Route path="/pricing" element={<Pricing />} />
       <Route path="/services" element={<Services />} />
       <Route path="/services/translation" element={<TranslationService />} />
+      <Route path="/services/document-translation" element={<TranslationService />} />
+      <Route path="/services/legal-translation" element={<LegalTranslationService />} />
+      <Route path="/services/medical-translation" element={<MedicalTranslationService />} />
+      <Route path="/services/technical-translation" element={<TechnicalTranslationService />} />
+      <Route path="/blog" element={<Blog />} />
+      <Route path="/blog/admin" element={<BlogAdmin />} />
+      <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/services/interpretation" element={<InterpretationService />} />
       <Route path="/services/apostille" element={<ApostilleService />} />
       <Route path="/services/proof-reading" element={<ProofReadingService />} />
@@ -90,7 +103,6 @@ function AppShell() {
       <Route path="/services/transcription" element={<TranscriptionService />} />
       <Route path="/services/subtitling" element={<SubtitlingService />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/blog" element={<Blog />} />
       <Route path="/terms" element={<Terms />} />
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/refund-policy" element={<RefundPolicy />} />
@@ -103,9 +115,11 @@ function AppShell() {
 export default function App() {
   return (
     <LanguageProvider>
-      <Router>
-        <AppShell />
-    </Router>
+      <BlogProvider>
+        <Router>
+          <AppShell />
+        </Router>
+      </BlogProvider>
     </LanguageProvider>
   );
 }

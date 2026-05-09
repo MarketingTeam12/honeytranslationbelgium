@@ -106,7 +106,7 @@ export function Services() {
         </div>
       </section>
 
-      {/* SECTION 3: CORE SERVICES - What We Translate */}
+      {/* SECTION 4: CORE SERVICES - What We Translate */}
       <section className="section-spacing bg-soft-blue px-6 md:px-8 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-20 right-10 w-72 h-72 bg-[#00C4FF]/8 rounded-full blur-3xl"></div>
@@ -131,47 +131,54 @@ export function Services() {
                 title: t('servicesPage.core.service1Title'),
                 description: t('servicesPage.core.service1Desc'),
                 gradient: 'from-blue-400 to-blue-500',
-                delay: '0ms'
+                delay: '0ms',
+                path: '/services/translation'
               },
               {
                 icon: GlobeIcon,
                 title: t('servicesPage.core.service2Title'),
                 description: t('servicesPage.core.service2Desc'),
                 gradient: 'from-purple-400 to-purple-500',
-                delay: '100ms'
+                delay: '100ms',
+                path: '/services/localization'
               },
               {
                 icon: TrendingUp,
                 title: t('servicesPage.core.service3Title'),
                 description: t('servicesPage.core.service3Desc'),
                 gradient: 'from-pink-400 to-pink-500',
-                delay: '200ms'
+                delay: '200ms',
+                path: '/services/content-writing'
               },
               {
                 icon: Scale,
                 title: t('servicesPage.core.service4Title'),
                 description: t('servicesPage.core.service4Desc'),
                 gradient: 'from-green-400 to-green-500',
-                delay: '300ms'
+                delay: '300ms',
+                path: '/services/translation'
               },
               {
                 icon: GraduationCap,
                 title: t('servicesPage.core.service5Title'),
                 description: t('servicesPage.core.service5Desc'),
                 gradient: 'from-yellow-400 to-yellow-500',
-                delay: '400ms'
+                delay: '400ms',
+                path: '/services/translation'
               },
               {
                 icon: FileText,
                 title: t('servicesPage.core.service6Title'),
                 description: t('servicesPage.core.service6Desc'),
                 gradient: 'from-indigo-400 to-indigo-500',
-                delay: '500ms'
+                delay: '500ms',
+                path: '/services/translation'
               }
             ].map((service, index) => (
-              <div 
+              <Link
                 key={index}
-                className="bg-white rounded-3xl p-8 card-shadow-premium hover-glow group transition-all duration-500 hover:scale-105 hover:-translate-y-2 reveal-on-scroll"
+                to={service.path}
+                className="block bg-white rounded-3xl p-8 card-shadow-premium hover-glow group transition-all duration-500 hover:scale-105 hover:-translate-y-2 reveal-on-scroll"
                 style={{ animationDelay: service.delay }}
               >
                 {/* Icon */}
@@ -182,7 +189,7 @@ export function Services() {
                 {/* Content */}
                 <h3 className="text-2xl font-bold text-[#151249] mb-4">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{service.description}</p>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

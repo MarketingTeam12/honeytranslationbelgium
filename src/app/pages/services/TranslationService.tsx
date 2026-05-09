@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { 
   Languages, CheckCircle2, Shield, Clock, Award, Globe, 
   Scale, Heart, BookOpen, FileCheck, Briefcase, Users,
@@ -6,6 +7,10 @@ import {
 } from 'lucide-react';
 
 export function TranslationService() {
+  useEffect(() => {
+    document.title = 'Document Translation Services | Honey Translation';
+  }, []);
+
   return (
     <div className="pt-16">
       {/* HERO SECTION */}
@@ -30,7 +35,7 @@ export function TranslationService() {
               lineHeight: '1.2',
               textShadow: '0px 3px 10px rgba(0,0,0,0.4)'
             }}>
-              Translation Service
+              Document Translation Services
             </h1>
 
             {/* Subtitle */}

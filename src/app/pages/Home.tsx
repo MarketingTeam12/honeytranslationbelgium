@@ -3,6 +3,7 @@ import { FileText, Scale, Globe as GlobeIcon, Stethoscope, Award, Subtitles, Bui
 import { useState, useEffect, useRef } from 'react';
 import { OrbitAnimation } from '../components/OrbitAnimation';
 import { FeatureOrbitAnimation } from '../components/FeatureOrbitAnimation';
+import { LanguagePairTranslator } from '../components/LanguagePairTranslator';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Home() {
@@ -201,7 +202,14 @@ export function Home() {
         </div>
       </section>
 
-      {/* SECTION 2: OUR WORKING PROCESS - LIGHT SECTION (Breathing Space) */}
+      {/* SECTION 2: LANGUAGE PAIR TRANSLATOR */}
+      <section className="py-24 bg-[#f8fafc] px-6">
+        <div className="container mx-auto max-w-7xl">
+          <LanguagePairTranslator />
+        </div>
+      </section>
+
+      {/* SECTION 3: OUR WORKING PROCESS - LIGHT SECTION (Breathing Space) */}
       <section className="py-32 bg-soft-blue px-6 relative overflow-hidden gradient-edge-bottom">
         {/* Background decorative elements */}
         <div className="absolute inset-0 opacity-20 pattern-dots"></div>

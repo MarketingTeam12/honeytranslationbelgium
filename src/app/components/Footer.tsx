@@ -6,6 +6,15 @@ import { useLanguage } from '../../contexts/LanguageContext';
 export function Footer() {
   const { t } = useLanguage();
 
+  const serviceLinks = [
+    { label: t('footer.docTranslation'), to: '/services/document-translation' },
+    { label: t('footer.legalTranslation'), to: '/services/legal-translation' },
+    { label: t('footer.medicalTranslation'), to: '/services/medical-translation' },
+    { label: t('footer.technicalTranslation'), to: '/services/technical-translation' },
+    { label: t('footer.subtitles'), to: '/services/subtitling' },
+    { label: t('footer.websiteLocalization'), to: '/services/localization' }
+  ];
+
   return (
     <footer className="bg-gradient-to-br from-[#0a0828] via-[#151249] to-[#0d0a3a] text-white relative overflow-hidden">
       {/* Decorative glow effects */}
@@ -79,21 +88,14 @@ export function Footer() {
             <h3 className="font-bold mb-6 text-lg text-white">{t('footer.servicesTitle')}</h3>
             <div className="h-px bg-gradient-to-r from-yellow-400 via-yellow-400/50 to-transparent mb-6 w-12"></div>
             <ul className="space-y-3.5">
-              {[
-                t('footer.docTranslation'),
-                t('footer.legalTranslation'),
-                t('footer.medicalTranslation'),
-                t('footer.technicalTranslation'),
-                t('footer.subtitles'),
-                t('footer.websiteLocalization')
-              ].map((service, index) => (
+              {serviceLinks.map((service, index) => (
                 <li key={index}>
                   <Link 
-                    to="/services" 
+                    to={service.to} 
                     className="text-gray-400 hover:text-yellow-400 transition-all text-sm flex items-center gap-2 group"
                   >
                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-400/0 group-hover:bg-yellow-400 transition-all group-hover:shadow-[0_0_8px_rgba(250,204,21,0.6)]"></span>
-                    <span className="group-hover:translate-x-1 transition-transform">{service}</span>
+                    <span className="group-hover:translate-x-1 transition-transform">{service.label}</span>
                   </Link>
                 </li>
               ))}

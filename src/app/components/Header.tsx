@@ -9,7 +9,6 @@ import {
   Target, RefreshCw, File, Briefcase, Languages, Mic,
   PenTool, Image as ImageIcon, ScrollText, ClipboardList
 } from 'lucide-react';
-import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 interface HeaderProps {
@@ -337,8 +336,6 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
             )}
           </Link>
 
-          <LanguageSwitcher />
-
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -474,10 +471,6 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
             >
               {t('nav.blog')}
             </Link>
-
-            <div className="pt-2 border-t border-gray-200">
-              <LanguageSwitcher />
-            </div>
 
             <button
               onClick={(e) => {

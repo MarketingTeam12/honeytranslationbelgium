@@ -1,8 +1,11 @@
 import { Calendar, ArrowRight, ChevronRight, Globe, Mail } from 'lucide-react';
 import type { FormEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useBlog } from '../../contexts/BlogContext';
 
 export function Blog() {
+  const { posts: blogPosts, featuredPost } = useBlog();
   const [activeFilter, setActiveFilter] = useState('All');
   const [currentPage, setCurrentPage] = useState(1);
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -17,70 +20,22 @@ export function Blog() {
   };
 
   const categories = ['All', 'Translation', 'Localization', 'Business', 'Languages', 'Culture'];
-
-  const featuredPost = {
-    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop',
-    title: 'The Future of AI in Professional Translation Services',
-    excerpt: 'Discover how artificial intelligence is transforming the translation industry while maintaining the human touch that ensures cultural accuracy and nuanced communication.',
-    category: 'Industry Trends',
-    date: 'December 10, 2025',
-    readTime: '8 min read'
-  };
-
-  const blogPosts = [
-    {
-      image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&h=500&fit=crop',
-      title: 'Top 10 Translation Mistakes That Cost Businesses Millions',
-      excerpt: 'Learn about the most common translation errors and how to avoid them in your international business communications.',
-      category: 'Business',
-      date: 'December 8, 2025',
-      readTime: '6 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=500&fit=crop',
-      title: 'Understanding Legal Translation: A Comprehensive Guide',
-      excerpt: 'Everything you need to know about certified legal translations for international contracts, immigration, and court documents.',
-      category: 'Translation',
-      date: 'December 5, 2025',
-      readTime: '10 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=800&h=500&fit=crop',
-      title: 'Cultural Nuances in Arabic Translation',
-      excerpt: 'Explore the importance of cultural sensitivity when translating content for Arabic-speaking markets.',
-      category: 'Culture',
-      date: 'December 3, 2025',
-      readTime: '7 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=800&h=500&fit=crop',
-      title: 'Website Localization Best Practices for 2025',
-      excerpt: 'A complete guide to adapting your website for Belgian audiences while maintaining brand consistency.',
-      category: 'Localization',
-      date: 'November 30, 2025',
-      readTime: '9 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&h=500&fit=crop',
-      title: 'How to Choose the Right Translation Service Provider',
-      excerpt: 'Key factors to consider when selecting a professional translation partner for your business needs.',
-      category: 'Business',
-      date: 'November 28, 2025',
-      readTime: '5 min read'
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=500&fit=crop',
-      title: 'The Rise of Remote Interpretation Services',
-      excerpt: 'How video conferencing technology is revolutionizing interpretation services across Belgium and internationally.',
-      category: 'Translation',
-      date: 'November 25, 2025',
-      readTime: '6 min read'
-    }
-  ];
+  const postsPerPage = 3;
 
   const filteredPosts = activeFilter === 'All' 
     ? blogPosts 
     : blogPosts.filter(post => post.category.toLowerCase().includes(activeFilter.toLowerCase()));
+
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / postsPerPage));
+  const visiblePosts = filteredPosts.slice((currentPage - 1) * postsPerPage, currentPage * postsPerPage);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
+
+  const handlePageToggle = () => {
+    setCurrentPage((prevPage) => (prevPage < totalPages ? prevPage + 1 : 1));
+  };
 
   return (
     <div className="pt-16">
@@ -167,10 +122,10 @@ export function Blog() {
                 </p>
 
                 <div className="flex items-center gap-6">
-                  <button className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] rounded-xl hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all font-bold">
+                  <Link to={`/blog/${featuredPost.slug}`} className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] rounded-xl hover:shadow-[0_0_30px_rgba(250,204,21,0.5)] transition-all font-bold">
                     Read More
                     <ArrowRight className="w-5 h-5" />
-                  </button>
+                  </Link>
                   <span className="text-gray-500 text-sm">{featuredPost.readTime}</span>
                 </div>
               </div>
@@ -204,7 +159,7 @@ export function Blog() {
       <section className="py-24 bg-gradient-to-b from-gray-50 to-white px-6">
         <div className="container mx-auto max-w-7xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredPosts.map((post, index) => (
+            {visiblePosts.map((post, index) => (
               <article 
                 key={index}
                 className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group border border-gray-100"
@@ -240,17 +195,17 @@ export function Blog() {
                     {post.excerpt}
                   </p>
 
-                  <button className="inline-flex items-center gap-2 text-[#151249] font-semibold hover:gap-3 transition-all group-hover:text-yellow-600">
+                  <Link to={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-[#151249] font-semibold hover:gap-3 transition-all group-hover:text-yellow-600">
                     Read More
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
           </div>
 
           {/* Empty State */}
-          {filteredPosts.length === 0 && (
+          {visiblePosts.length === 0 && (
             <div className="text-center py-20">
               <div className="text-6xl mb-4">📭</div>
               <h3 className="text-2xl font-bold text-[#151249] mb-2">No Articles Found</h3>
@@ -316,43 +271,16 @@ export function Blog() {
 
       {/* SECTION 6: PAGINATION */}
       <section className="py-16 bg-gradient-to-b from-gray-50 to-white px-6">
-        <div className="container mx-auto max-w-7xl">
-          <div className="flex justify-center items-center gap-2">
-            {/* Previous */}
-            <button 
-              className="w-10 h-10 rounded-lg border border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={currentPage === 1}
-            >
-              <ChevronRight className="w-5 h-5 text-gray-600 rotate-180" />
-            </button>
-
-            {/* Page numbers */}
-            {[1, 2, 3, 4, 5].map((page) => (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-lg font-semibold transition-all ${
-                  currentPage === page
-                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-[#151249] shadow-lg shadow-yellow-400/30'
-                    : 'border border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 text-gray-700'
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-
-            {/* Next */}
-            <button 
-              className="w-10 h-10 rounded-lg border border-gray-200 hover:border-yellow-400 hover:bg-yellow-50 flex items-center justify-center transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              disabled={currentPage === 5}
-            >
-              <ChevronRight className="w-5 h-5 text-gray-600" />
-            </button>
-          </div>
-
-          <p className="text-center text-gray-500 text-sm mt-6">
-            Page {currentPage} of 5
-          </p>
+        <div className="container mx-auto max-w-7xl text-center">
+          <p className="text-sm text-gray-500 mb-4">Page {currentPage} of {totalPages}</p>
+          <button
+            type="button"
+            onClick={handlePageToggle}
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-[#151249] text-white hover:bg-[#1e1a5e] transition-all"
+          >
+            {currentPage < totalPages ? 'More Pages' : 'Back to First Page'}
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
       </section>
     </div>

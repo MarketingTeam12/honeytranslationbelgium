@@ -174,31 +174,27 @@ export function Contact() {
               </div>
 
               {/* Select Language */}
-              <div>
-                <label htmlFor="language" className="block text-[#151249] mb-3 font-semibold">
-                  {t('contact.form.language')}
-                </label>
-                <select
-                  id="language"
-                  name="language"
-                  value={formData.language}
-                  onChange={handleChange}
-                  onFocus={() => setFocusedField('language')}
-                  onBlur={() => setFocusedField(null)}
-                  className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 focus:border-yellow-400 focus:outline-none transition-all text-lg"
-                  style={{
-                    boxShadow: focusedField === 'language' ? '0 0 0 4px rgba(250,204,21,0.1)' : 'none'
-                  }}
-                >
-                  <option value="">{t('contact.form.languagePlaceholder')}</option>
-                  <option value="english-arabic">{t('home.contactForm.enToAr')}</option>
-                  <option value="arabic-english">{t('home.contactForm.arToEn')}</option>
-                  <option value="english-french">{t('home.contactForm.enToFr')}</option>
-                  <option value="english-spanish">{t('home.contactForm.enToEs')}</option>
-                  <option value="english-chinese">{t('home.contactForm.enToCn')}</option>
-                  <option value="other">{t('home.contactForm.otherPair')}</option>
-                </select>
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+  <input
+    type="text"
+    name="fromLanguage"
+    placeholder="From Language"
+    value={formData.fromLanguage}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-yellow-400 focus:outline-none"
+  />
+
+  <input
+    type="text"
+    name="toLanguage"
+    placeholder="To Language"
+    value={formData.toLanguage}
+    onChange={handleChange}
+    className="w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-yellow-400 focus:outline-none"
+  />
+
+</div>
 
               {/* File Upload */}
               <div>
