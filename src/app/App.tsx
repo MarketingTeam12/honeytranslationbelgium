@@ -11,6 +11,7 @@ import { About } from './pages/About';
 import { Services } from './pages/Services';
 import { Contact } from './pages/Contact';
 import { Blog } from './pages/Blog';
+import Belgium from './pages/Belgium';
 import { CEO } from './pages/CEO';
 import { Team } from './pages/Team';
 import { MissionVision } from './pages/MissionVision';
@@ -61,6 +62,7 @@ function AppShell() {
       <SiteTranslator />
       <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/belgium" element={<Belgium />} />
       <Route path="/fr" element={<FrenchHome />} />
       <Route path="/about" element={<About />} />
       <Route path="/ceo" element={<CEO />} />
