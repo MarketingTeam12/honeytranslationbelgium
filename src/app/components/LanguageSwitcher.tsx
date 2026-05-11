@@ -4,7 +4,6 @@ import { useLanguage } from '../../contexts/LanguageContext';
 
 export function LanguageSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
-  const [manualText, setManualText] = useState(() => localStorage.getItem('languageManualText') ?? '');
   const { language, setLanguage } = useLanguage();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -32,12 +31,8 @@ export function LanguageSwitcher() {
     setIsOpen(false);
   };
 
-  useEffect(() => {
-    localStorage.setItem('languageManualText', manualText);
-  }, [manualText]);
-
   return (
-    <div className="flex flex-wrap items-center gap-3" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef}>
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -75,16 +70,6 @@ export function LanguageSwitcher() {
         )}
       </div>
 
-      <label className="sr-only" htmlFor="language-manual-input">
-        Type content
-      </label>
-      <input
-        id="language-manual-input"
-        value={manualText}
-        onChange={(event) => setManualText(event.target.value)}
-        placeholder="Type content here..."
-        className="w-full min-w-[220px] rounded-2xl border border-gray-200 bg-white px-4 py-2 text-sm text-gray-800 shadow-sm focus:border-yellow-400 focus:outline-none"
-      />
     </div>
   );
 }

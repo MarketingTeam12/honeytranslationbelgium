@@ -9,6 +9,7 @@ import {
   Target, RefreshCw, File, Briefcase, Languages, Mic,
   PenTool, Image as ImageIcon, ScrollText, ClipboardList
 } from 'lucide-react';
+import { LanguageSwitcher } from './LanguageSwitcher';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 interface HeaderProps {
@@ -24,6 +25,7 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useLanguage();
+  const homeLabel = 'Home';
   
   const aboutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const servicesTimeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -160,7 +162,7 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
                 : 'text-gray-700 hover:text-yellow-600'
             }`}
           >
-            {t('nav.home')}
+            {homeLabel}
             {isActive('/') && location.pathname === '/' && (
               <span className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full shadow-[0_0_10px_rgba(250,204,21,0.6)]"></span>
             )}
@@ -336,6 +338,8 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
             )}
           </Link>
 
+          <LanguageSwitcher />
+
           <button
             onClick={(e) => {
               e.preventDefault();
@@ -369,7 +373,7 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
               }`}
               onClick={() => setMobileMenuOpen(false)}
             >
-              {t('nav.home')}
+              {homeLabel}
             </Link>
             
             {/* Mobile About Dropdown */}
@@ -471,6 +475,10 @@ export function Header({ onOpenPopup }: HeaderProps = {}) {
             >
               {t('nav.blog')}
             </Link>
+
+            <div className="pt-2 border-t border-gray-200">
+              <LanguageSwitcher />
+            </div>
 
             <button
               onClick={(e) => {

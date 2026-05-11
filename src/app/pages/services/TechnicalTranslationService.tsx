@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { FileText, CheckCircle2, Shield, Clock, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { FileText, CheckCircle2, Shield, Clock, Globe, Scale, Phone, MessageCircle, Mail } from 'lucide-react';
 
 export function TechnicalTranslationService() {
   useEffect(() => {
@@ -108,6 +109,244 @@ export function TechnicalTranslationService() {
                 <p className="text-gray-600">Translation designed for technical clarity and audience comprehension.</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TECHNICAL TRANSLATION SPECIALTIES */}
+      <section className="py-24 bg-white px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-[#151249] mb-6" style={{ fontSize: '2.75rem' }}>
+              Technical Translation Specialties
+            </h2>
+            <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              We handle complex technical documents with specialized industry expertise
+            </p>
+          </div>
+
+          {/* Specialties Cards */}
+          <div className="space-y-12">
+            {/* Engineering */}
+            <div className="bg-gradient-to-br from-orange-50 to-white rounded-3xl p-10 card-shadow-premium">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <Scale className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-[#151249] mb-4" style={{ fontSize: '2rem' }}>
+                    ⚙️ Engineering
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    {[
+                      'Mechanical engineering specs',
+                      'Electrical schematics',
+                      'Civil engineering plans'
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-orange-600 flex-shrink-0" />
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-orange-100 border-l-4 border-orange-500 p-4 rounded-r-xl">
+                    <p className="text-gray-700 italic">
+                      Engineering translations require precise terminology and understanding of technical standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* IT & Software */}
+            <div className="bg-gradient-to-br from-blue-50 to-white rounded-3xl p-10 card-shadow-premium">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <Globe className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-[#151249] mb-4" style={{ fontSize: '2rem' }}>
+                    💻 IT & Software
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    {[
+                      'Software documentation',
+                      'API specifications',
+                      'User manuals & guides'
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-blue-600 flex-shrink-0" />
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-blue-100 border-l-4 border-blue-500 p-4 rounded-r-xl">
+                    <p className="text-gray-700 italic">
+                      IT translations must be technically accurate and user-friendly for global audiences.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Manufacturing */}
+            <div className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-10 card-shadow-premium">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <CheckCircle2 className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-[#151249] mb-4" style={{ fontSize: '2rem' }}>
+                    🏭 Manufacturing
+                  </h3>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    {[
+                      'Production manuals',
+                      'Quality control procedures',
+                      'Safety data sheets'
+                    ].map((item, idx) => (
+                      <div key={idx} className="flex items-center gap-2">
+                        <CheckCircle2 className="w-5 h-5 text-gray-600 flex-shrink-0" />
+                        <span className="text-gray-700">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-gray-100 border-l-4 border-gray-500 p-4 rounded-r-xl">
+                    <p className="text-gray-700 italic">
+                      Manufacturing translations ensure compliance with international safety and quality standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT MAKES US PROFESSIONAL */}
+      <section className="py-24 bg-gradient-to-b from-soft-blue to-white px-6 md:px-8">
+        <div className="container mx-auto max-w-6xl">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-[#151249] mb-6" style={{ fontSize: '2.75rem' }}>
+              What Makes Our Technical Translation Professional?
+            </h2>
+          </div>
+
+          {/* Professional Features */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {/* Technical Expertise */}
+            <div className="text-center">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center mx-auto mb-6 shadow-xl">
+                <Scale className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#151249] mb-4">⚙️ Technical Expertise</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Our translators have engineering and technical backgrounds, ensuring <strong className="text-[#151249]">accurate industry terminology</strong>.
+              </p>
+            </div>
+
+            {/* Industry Standards */}
+            <div className="text-center">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-400 to-blue-500 flex items-center justify-center mx-auto mb-6 shadow-xl">
+                <Shield className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#151249] mb-4">📏 Industry Standards</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                We follow international technical standards and <strong className="text-[#151249]">regulatory requirements</strong> for accurate translations.
+              </p>
+            </div>
+
+            {/* Clarity */}
+            <div className="text-center">
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-gray-400 to-gray-500 flex items-center justify-center mx-auto mb-6 shadow-xl">
+                <CheckCircle2 className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-[#151249] mb-4">🔍 Clarity</h3>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Technical translations are reviewed for clarity and comprehension, ensuring <strong className="text-[#151249]">end-users understand the content</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA SECTION */}
+      <section className="py-24 bg-gradient-to-br from-[#151249] to-[#1e1a5e] text-white px-6 md:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 world-map-pattern opacity-10"></div>
+        <div className="blur-blob w-96 h-96 bg-orange-400/20 bottom-10 right-10"></div>
+
+        <div className="container mx-auto max-w-5xl relative z-10">
+          <div className="text-center mb-12">
+            <h2 className="text-white mb-6" style={{ fontSize: '2.75rem' }}>
+              Get Your Technical Documents Translated
+            </h2>
+            <p className="text-2xl text-orange-400 mb-10 font-semibold">
+              Precise, industry-compliant, and clear.
+            </p>
+          </div>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
+            <a 
+              href="tel:+3220000000"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-orange-400 to-orange-500 text-[#151249] font-bold hover:scale-105 transition-transform shadow-xl"
+            >
+              <Phone className="w-5 h-5" />
+              <span>Call Us</span>
+            </a>
+
+            <a 
+              href="https://wa.me/917299005577"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-green-500 text-white font-bold hover:scale-105 transition-transform shadow-xl"
+            >
+              <MessageCircle className="w-5 h-5" />
+              <span>WhatsApp Us</span>
+            </a>
+
+            <Link 
+              to="/contact"
+              className="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white text-[#151249] font-bold hover:scale-105 transition-transform shadow-xl"
+            >
+              <Mail className="w-5 h-5" />
+              <span>Request a Quote</span>
+            </Link>
+          </div>
+
+          {/* Contact Info */}
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 max-w-2xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-orange-400/20 flex items-center justify-center">
+                  <Mail className="w-5 h-5 text-orange-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-white/60 mb-1">Email</p>
+                  <a href="mailto:sales@honeytranslations.com" className="text-white hover:text-orange-400 transition-colors font-semibold">
+                    sales@honeytranslations.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-lg bg-orange-400/20 flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-orange-400" />
+                </div>
+                <div>
+                  <p className="text-sm text-white/60 mb-1">Response Time</p>
+                  <p className="text-white font-semibold">Within 24 hours</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Edit3, Plus, Save, Trash2, UploadCloud } from 'lucide-react';
+import { ArrowLeft, Edit3, Lock, Plus, Save, Trash2, Unlock, UploadCloud } from 'lucide-react';
+import { useAuth } from '../../contexts/AuthContext';
 import { useBlog } from '../../contexts/BlogContext';
 import type { BlogPost } from '../data/blogPosts';
 
@@ -29,6 +30,10 @@ export function BlogAdmin() {
   const [formValue, setFormValue] = useState<BlogPost>(blankPost);
   const [contentText, setContentText] = useState('');
   const [message, setMessage] = useState('');
+
+  const { isAdmin, login, logout } = useAuth();
+  const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState('');
 
   const selectedPost = useMemo(
     () => posts.find((post) => post.slug === selectedSlug) ?? null,
@@ -92,6 +97,56 @@ export function BlogAdmin() {
     setMessage('Post deleted successfully.');
   };
 
+  const handleLogin = () => {
+    if (!login(password.trim())) {
+      setLoginError('Invalid admin password.');
+      return;
+    }
+    setLoginError('');
+    setPassword('');
+  };
+
+  if (!isAdmin) {
+    return (
+      <div className="pt-24 pb-20 px-6 bg-gray-50 min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-md bg-white rounded-3xl shadow-xl border border-gray-200 p-10">
+          <div className="mb-8 text-center">
+            <Unlock className="w-12 h-12 mx-auto text-yellow-500 mb-4" />
+            <h1 className="text-3xl font-bold text-[#151249]">Admin Login</h1>
+            <p className="text-gray-600 mt-2">Only authorized admins can access the blog upload panel.</p>
+          </div>
+
+          <div className="space-y-5">
+            <div>
+              <label className="block text-sm font-semibold text-[#151249] mb-2">Admin Password</label>
+              <input
+                type="password"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                className="w-full rounded-2xl border border-gray-200 px-4 py-3 focus:border-yellow-400 focus:ring-yellow-100 focus:outline-none"
+                placeholder="Enter admin password"
+              />
+            </div>
+
+            {loginError && <p className="text-sm text-red-600">{loginError}</p>}
+
+            <button
+              type="button"
+              onClick={handleLogin}
+              className="w-full rounded-full bg-yellow-400 px-6 py-3 text-[#151249] font-semibold shadow-md hover:bg-yellow-500 transition-all"
+            >
+              Unlock Blog Admin
+            </button>
+
+            <div className="text-sm text-gray-500 text-center">
+              Use the secret admin password to manage blog posts. This panel is restricted to admin use only.
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="pt-24 pb-20 px-6 bg-gray-50 min-h-screen">
       <div className="container mx-auto max-w-7xl">
@@ -106,14 +161,24 @@ export function BlogAdmin() {
               Create, edit, and publish blog content for the blog section. Uploaded hero images are saved locally so the editor remains dynamic in the browser.
             </p>
           </div>
-          <button
-            type="button"
-            onClick={() => setSelectedSlug(null)}
-            className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-3 text-[#151249] font-semibold shadow-md hover:shadow-lg transition-all"
-          >
-            <Plus className="w-4 h-4" />
-            Create New Post
-          </button>
+          <div className="flex flex-wrap gap-3">
+            <button
+              type="button"
+              onClick={logout}
+              className="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-5 py-3 text-[#151249] font-semibold shadow-sm hover:border-gray-300 transition-all"
+            >
+              <Lock className="w-4 h-4" />
+              Logout
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedSlug(null)}
+              className="inline-flex items-center gap-2 rounded-full bg-yellow-400 px-5 py-3 text-[#151249] font-semibold shadow-md hover:shadow-lg transition-all"
+            >
+              <Plus className="w-4 h-4" />
+              Create New Post
+            </button>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 xl:grid-cols-[320px_minmax(0,1fr)] gap-8">

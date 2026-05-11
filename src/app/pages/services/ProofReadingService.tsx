@@ -183,9 +183,9 @@ export function ProofReadingService() {
             </div>
 
             {/* Legal Documents */}
-            <div className="bg-gradient-to-br from-green-50 to-white rounded-3xl p-10 card-shadow-premium">
+            <Link to="/services/legal-translation" className="block bg-gradient-to-br from-green-50 to-white rounded-3xl p-10 card-shadow-premium hover:scale-105 transition-transform duration-300 group">
               <div className="flex items-start gap-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center flex-shrink-0 shadow-lg">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-105 transition-all duration-300">
                   <Scale className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1">
@@ -207,7 +207,7 @@ export function ProofReadingService() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
 
             {/* Web & Marketing */}
             <div className="bg-gradient-to-br from-yellow-50 to-white rounded-3xl p-10 card-shadow-premium">

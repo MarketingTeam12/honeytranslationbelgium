@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FileText, Scale, Globe as GlobeIcon, Stethoscope, Award, Subtitles, Building2, GraduationCap, Briefcase, TrendingUp, Shield, Clock, Lock, Star, ChevronDown, Users, Languages, Calendar, MessageSquare, MapPin, FileCheck, MessageCircle, ArrowRight, Upload, CheckCircle2 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import { OrbitAnimation } from '../components/OrbitAnimation';
 import { FeatureOrbitAnimation } from '../components/FeatureOrbitAnimation';
-import { LanguagePairTranslator } from '../components/LanguagePairTranslator';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export function Home() {
@@ -28,6 +27,23 @@ export function Home() {
   });
   const [fileName, setFileName] = useState('');
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const featureRoutes: Record<number, string> = {
+    0: '/services/document-translation',
+    1: '/services/translation',
+    2: '/services/translation',
+    3: '/services/medical-translation',
+    4: '/services/legal-translation',
+    5: '/services'
+  };
+
+  const handleFeatureClick = (featureId: number) => {
+    const path = featureRoutes[featureId];
+    if (path) {
+      navigate(path);
+    }
+  };
 
   // Scroll reveal observer
   useEffect(() => {
@@ -199,13 +215,6 @@ export function Home() {
               { angle: 300, text: 'JP', label: 'Japanese', id: 5 }
             ]} />
           </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: LANGUAGE PAIR TRANSLATOR */}
-      <section className="py-24 bg-[#f8fafc] px-6">
-        <div className="container mx-auto max-w-7xl">
-          <LanguagePairTranslator />
         </div>
       </section>
 
@@ -480,14 +489,17 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Orbital Animation System - Features */}
             <div className="flex justify-center animate-slideInLeft relative h-[300px] sm:h-[350px] md:h-[420px] lg:h-[500px]">
-              <FeatureOrbitAnimation items={[
-                { angle: 0, icon: FileText, label: 'Documents', color: 'blue-500', borderColor: '#00C4FF', id: 0 },
-                { angle: 60, icon: Award, label: 'Certified', color: 'green-500', borderColor: '#10B981', id: 1 },
-                { angle: 120, icon: GlobeIcon, label: '120+ Languages', color: 'purple-500', borderColor: '#A855F7', id: 2 },
-                { angle: 180, icon: Clock, label: '24-48 Hours', color: '[#00C4FF]', borderColor: '#00C4FF', id: 3 },
-                { angle: 240, icon: Shield, label: 'Secure', color: '[#E3B552]', borderColor: '#E3B552', id: 4 },
-                { angle: 300, icon: Users, label: '10K+ Clients', color: 'pink-500', borderColor: '#EC4899', id: 5 }
-              ]} />
+              <FeatureOrbitAnimation
+                items={[
+                  { angle: 0, icon: FileText, label: 'Documents', color: 'blue-500', borderColor: '#00C4FF', id: 0 },
+                  { angle: 60, icon: Award, label: 'Certified', color: 'green-500', borderColor: '#10B981', id: 1 },
+                  { angle: 120, icon: GlobeIcon, label: '120+ Languages', color: 'purple-500', borderColor: '#A855F7', id: 2 },
+                  { angle: 180, icon: Clock, label: '24-48 Hours', color: '[#00C4FF]', borderColor: '#00C4FF', id: 3 },
+                  { angle: 240, icon: Shield, label: 'Secure', color: '[#E3B552]', borderColor: '#E3B552', id: 4 },
+                  { angle: 300, icon: Users, label: '10K+ Clients', color: 'pink-500', borderColor: '#EC4899', id: 5 }
+                ]}
+                onFeatureClick={handleFeatureClick}
+              />
             </div>
 
             {/* Mission & Stats */}

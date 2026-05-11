@@ -12,11 +12,18 @@ interface FeatureItem {
 
 interface FeatureOrbitAnimationProps {
   items: FeatureItem[];
+  onFeatureClick?: (id: number) => void;
 }
 
-export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
+export function FeatureOrbitAnimation({ items, onFeatureClick }: FeatureOrbitAnimationProps) {
   const [isOrbitPaused, setIsOrbitPaused] = useState(false);
   const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
+
+  const handleFeatureClick = (id: number) => {
+    if (typeof onFeatureClick === 'function') {
+      onFeatureClick(id);
+    }
+  };
 
   return (
     <div className="relative w-full h-full">
@@ -74,6 +81,7 @@ export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
                 setIsOrbitPaused(false);
                 setHoveredFeature(null);
               }}
+              onClick={() => handleFeatureClick(feature.id)}
             >
               <div 
                 className="pointer-events-auto"
@@ -82,7 +90,7 @@ export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
                 }}
               >
                 <div 
-                  className={`bg-white rounded-xl p-3 card-shadow-premium transition-all duration-300 ${
+                  className={`bg-white rounded-xl p-3 card-shadow-premium transition-all duration-300 cursor-pointer ${
                     hoveredFeature === feature.id ? 'scale-105 shadow-glow-gold' : ''
                   }`}
                   style={{ 
@@ -133,6 +141,7 @@ export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
                 setIsOrbitPaused(false);
                 setHoveredFeature(null);
               }}
+              onClick={() => handleFeatureClick(feature.id)}
             >
               <div 
                 className="pointer-events-auto"
@@ -141,7 +150,7 @@ export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
                 }}
               >
                 <div 
-                  className={`bg-white rounded-xl p-4 card-shadow-premium transition-all duration-300 ${
+                  className={`bg-white rounded-xl p-4 card-shadow-premium transition-all duration-300 cursor-pointer ${
                     hoveredFeature === feature.id ? 'scale-105 shadow-glow-gold' : ''
                   }`}
                   style={{ 
@@ -192,6 +201,7 @@ export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
                 setIsOrbitPaused(false);
                 setHoveredFeature(null);
               }}
+              onClick={() => handleFeatureClick(feature.id)}
             >
               <div 
                 className="pointer-events-auto"
@@ -200,7 +210,7 @@ export function FeatureOrbitAnimation({ items }: FeatureOrbitAnimationProps) {
                 }}
               >
                 <div 
-                  className={`bg-white rounded-2xl p-6 card-shadow-premium transition-all duration-300 ${
+                  className={`bg-white rounded-2xl p-6 card-shadow-premium transition-all duration-300 cursor-pointer ${
                     hoveredFeature === feature.id ? 'scale-105 shadow-glow-gold' : ''
                   }`}
                   style={{ 

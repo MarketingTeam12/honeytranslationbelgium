@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect, useState } from 'react';
 import { LanguageProvider } from '../contexts/LanguageContext';
 import { BlogProvider } from '../contexts/BlogContext';
+import { AuthProvider } from '../contexts/AuthContext';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ScrollProgressBar } from './components/ScrollProgressBar';
@@ -116,9 +117,11 @@ export default function App() {
   return (
     <LanguageProvider>
       <BlogProvider>
-        <Router>
-          <AppShell />
-        </Router>
+        <AuthProvider>
+          <Router>
+            <AppShell />
+          </Router>
+        </AuthProvider>
       </BlogProvider>
     </LanguageProvider>
   );
